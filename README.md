@@ -22,7 +22,7 @@ The layout was extracted to a SPICE netlist, capturing parasitic node capacitanc
 
 *Note: The slight asymmetry in delay times reflects the physical reality of carrier mobility differences and extracted parasitic overlap capacitances at the 180nm scale.*
 
-![layout.png]
+![Design](layout.png)
 
 ## 🪤 Design Traps Logged & Resolved
 During the layout and simulation phase, several physical and simulation rule traps were identified and resolved. Maintaining this log prevents recurring silicon layout errors:
