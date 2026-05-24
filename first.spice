@@ -1,0 +1,31 @@
+* SPICE3 file created from first.ext - technology: scmos
+
+.option scale=1u
+* [Trap 2 Fix: Including the actual physics models for the transistors]
+.include 180nm_bulk.txt 
+
+M1000 out in gnd Gnd nfet w=4 l=2
++ ad=40 pd=28 as=20 ps=18
+M1001 out in vdd vdd pfet w=8 l=2
++ ad=80 pd=36 as=40 ps=26
+C0 gnd Gnd 2.44fF
+C1 out Gnd 2.63fF
+C2 in Gnd 4.80fF
+
+v1 vdd gnd 1.8
+vin in gnd pulse(0 1.8 5n 1n 1n 20n 50n)
+
+* Measure High-to-Low Output Delay (Input rising)
+.meas tran tphl trig v(in) val=0.9 rise=1 targ v(out) val=0.9 fall=1
+
+* Measure Low-to-High Output Delay (Input falling)
+.meas tran tplh trig v(in) val=0.9 fall=1 targ v(out) val=0.9 rise=1
+
+* [Trap 3 Fix: Lowering the step size to 0.1ns to capture the fast 1ns edges]
+.tran 0.1n 200n     
+.control
+run
+plot v(in) v(out)
+
+.endc
+.end

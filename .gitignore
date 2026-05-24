@@ -1,0 +1,10 @@
+# Ngspice raw and log files
+*.raw
+*.log
+
+# Magic intermediate extraction files
+*.ext
+
+# OS generated files
+.DS_Store
+Thumbs.db
